@@ -92,7 +92,8 @@ The driver then controls the DC motor according to the controller output.
 Circuit Diagram
 
 Replace the placeholder below with your actual Proteus circuit/interface diagram:
-![Circuit Interface Diagram](Documentation/Circuit_Interface_Diagram.png)
+<img width="2720" height="2720" alt="stm32_knee_exoskeleton_circuit_interface_diagram" src="https://github.com/user-attachments/assets/d1bdcc40-273e-4d0e-8687-527810334287" />
+
 8. Control Algorithm
 
 The controller continuously performs the following sequence:
