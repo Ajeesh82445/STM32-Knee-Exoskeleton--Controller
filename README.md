@@ -61,10 +61,13 @@ The main objectives of the project are:
                           |
                           v
                Software Position Model
-Hardware Components
-STM32F103C6Tx
-L293D Motor Driver
-DC Motor
-Potentiometers
-Virtual Terminal
-Oscilloscope
+H| Component         | Purpose                             |
+| ----------------- | ----------------------------------- |
+| STM32F103C6Tx     | Main microcontroller                |
+| RV2 Potentiometer | Desired knee-angle input            |
+| RV1 Potentiometer | Position-sensor interface/provision |
+| L293D             | DC motor driver                     |
+| DC Motor          | Knee-joint actuator                 |
+| Virtual Terminal  | UART monitoring                     |
+| Oscilloscope      | PWM waveform observation            |
+
