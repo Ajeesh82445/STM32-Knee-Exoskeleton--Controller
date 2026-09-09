@@ -61,3 +61,10 @@ The main objectives of the project are:
                           |
                           v
                Software Position Model
+Hardware Components
+STM32F103C6Tx
+L293D Motor Driver
+DC Motor
+Potentiometers
+Virtual Terminal
+Oscilloscope
