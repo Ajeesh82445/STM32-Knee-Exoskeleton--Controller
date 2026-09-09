@@ -61,7 +61,7 @@ The main objectives of the project are:
                           |
                           v
                Software Position Model
-## Hardware Components
+## 5. Hardware Components
 
 - **STM32F103C6Tx** – Main microcontroller
 - **RV2 Potentiometer** – Desired knee-angle input
@@ -70,3 +70,55 @@ The main objectives of the project are:
 - **DC Motor** – Knee-joint actuator
 - **Virtual Terminal** – UART monitoring
 - **Oscilloscope** – PWM waveform observation
+5. Software and Tools
+STM32CubeIDE
+STM32CubeMX
+Embedded C
+STM32 HAL Library
+Proteus 8
+Virtual Terminal
+Oscilloscope
+6. Circuit / Interface Diagram
+
+The STM32 generates the control signals required by the L293D motor driver.
+
+The L293D receives:
+
+PWM enable signal from PA6
+Direction control signals from PB0 and PB1
+
+The driver then controls the DC motor according to the controller output.
+
+Circuit Diagram
+
+Replace the placeholder below with your actual Proteus circuit/interface diagram:
+![Circuit Interface Diagram](Documentation/Circuit_Interface_Diagram.png)
+8. Control Algorithm
+
+The controller continuously performs the following sequence:
+
+Read Desired Angle
+        |
+        v
+Calculate Position Error
+        |
+        v
+Determine Motor Direction
+        |
+        v
+Calculate PWM Duty Cycle
+        |
+        v
+Update Motor / Joint Response
+        |
+        v
+Repeat
+The position error is calculated using:
+
+Error = Desired Angle - Actual Angle
+
+The PWM duty cycle is approximately proportional to the magnitude of the error:
+
+PWM Duty = |Error| × PWM Gain
+
+The PWM duty cycle is limited to a maximum of 100%.
