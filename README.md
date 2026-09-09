@@ -1,125 +1,61 @@
-# STM32-Based Knee Exoskeleton Joint Position Control System
+# STM32 Knee Exoskeleton Controller
 
-A Proteus-simulated embedded control system for knee-joint position control using an STM32F103C6Tx microcontroller, PWM-based DC motor control, and an L293D motor driver.
+A simulation-based knee exoskeleton control system developed using an STM32F103C6Tx microcontroller, PWM motor control, L293D motor driver, and Proteus.
+
+The system compares a desired knee angle with a software-simulated actual knee angle and controls a DC motor to reduce the position error.
 
 ---
 
 ## Project Overview
 
-This project demonstrates the control of a knee exoskeleton joint using a closed-loop position control concept.
+The project demonstrates the basic control concept of a knee exoskeleton.
 
-The user provides a desired knee angle through a potentiometer. The STM32F103C6Tx reads the desired angle using its ADC, calculates the position error, and generates a PWM signal and motor-direction control signals. The L293D motor driver then controls the direction and speed of a DC motor.
+A potentiometer is used to provide the desired knee angle. The STM32 calculates the difference between the desired and actual angle and controls the DC motor through the L293D motor driver.
 
-The current Proteus implementation uses a **software-simulated joint-position response** to represent the actual knee angle. This allows the control algorithm to be demonstrated without requiring a mechanically coupled physical position sensor.
+The complete system is developed and tested in Proteus simulation.
 
 ---
 
-## Objective
+## Objectives
 
-The main objectives of the project are:
-
-- To interface an angle input with an STM32 microcontroller using ADC.
-- To calculate the difference between desired and actual joint angle.
-- To control motor speed using PWM.
-- To control motor direction according to the position error.
-- To demonstrate forward, reverse, and stop operation.
-- To simulate the complete control system using Proteus.
+- Develop a basic knee-angle control system using STM32.
+- Calculate the position error between desired and actual angle.
+- Control motor direction according to the position error.
+- Control motor speed using PWM.
+- Demonstrate forward, reverse, and stop conditions.
+- Monitor system parameters through UART.
+- Implement and test the system using Proteus simulation.
 
 ---
 
 ## System Architecture
 
+The overall control flow is:
+
 ```text
-          Desired Knee Angle
-          RV2 Potentiometer
-                 |
-                 v
-        STM32F103C6Tx MCU
-                 |
-        +--------+--------+
-        |                 |
-     ADC Input        Error Calculation
-        |                 |
-        +--------> Desired - Actual
-                          |
-                 +--------+--------+
-                 |                 |
-                 v                 v
-             PWM Output      Direction Control
-              PA6              PB0 / PB1
-                 |                 |
-                 +--------+--------+
-                          |
-                          v
-                       L293D
-                          |
-                          v
-                      DC Motor
-                          |
-                          v
-                Simulated Knee Joint
-                          |
-                          v
-               Software Position Model
-## 5. Hardware Components
-
-- **STM32F103C6Tx** – Main microcontroller
-- **RV2 Potentiometer** – Desired knee-angle input
-- **RV1 Potentiometer** – Position-sensor interface/provision
-- **L293D** – DC motor driver
-- **DC Motor** – Knee-joint actuator
-- **Virtual Terminal** – UART monitoring
-- **Oscilloscope** – PWM waveform observation
-5. Software and Tools
-STM32CubeIDE
-STM32CubeMX
-Embedded C
-STM32 HAL Library
-Proteus 8
-Virtual Terminal
-Oscilloscope
-6. Circuit / Interface Diagram
-
-The STM32 generates the control signals required by the L293D motor driver.
-
-The L293D receives:
-
-PWM enable signal from PA6
-Direction control signals from PB0 and PB1
-
-The driver then controls the DC motor according to the controller output.
-
-Circuit Diagram
-
-Replace the placeholder below with your actual Proteus circuit/interface diagram:
-<img width="2720" height="2720" alt="stm32_knee_exoskeleton_circuit_interface_diagram" src="https://github.com/user-attachments/assets/d1bdcc40-273e-4d0e-8687-527810334287" />
-
-8. Control Algorithm
-
-The controller continuously performs the following sequence:
-
-Read Desired Angle
-        |
-        v
-Calculate Position Error
-        |
-        v
-Determine Motor Direction
-        |
-        v
-Calculate PWM Duty Cycle
-        |
-        v
-Update Motor / Joint Response
-        |
-        v
-Repeat
-The position error is calculated using:
-
-Error = Desired Angle - Actual Angle
-
-The PWM duty cycle is approximately proportional to the magnitude of the error:
-
-PWM Duty = |Error| × PWM Gain
-
-The PWM duty cycle is limited to a maximum of 100%.
+Desired Angle
+     |
+     v
+Potentiometer
+     |
+     v
+STM32F103C6Tx
+     |
+     +----------------+
+     |                |
+     v                v
+Position Error      PWM
+     |                |
+     v                v
+Direction          L293D
+Control             |
+     |               v
+     +----------> DC Motor
+                     |
+                     v
+              Simulated Joint
+                     |
+                     v
+                Actual Angle
+                     |
+                     +------> Feedback
