@@ -1,12 +1,20 @@
-# STM32 Firmware
+# Firmware
 
-Firmware for the STM32F103C6Tx-based knee exoskeleton joint position controller.
+This folder contains the STM32 firmware developed for the knee exoskeleton joint position controller.
 
-The firmware performs:
-- Desired knee-angle acquisition using ADC
-- Joint position error calculation
+## Development Environment
+
+- Microcontroller: STM32F103C6Tx
+- IDE: STM32CubeIDE
+- Framework: STM32 HAL
+- Programming Language: Embedded C
+
+## Main Functions
+
+- ADC-based desired angle acquisition
+- Knee angle conversion
+- Position error calculation
+- PWM generation
 - Bidirectional motor control
-- PWM-based motor speed control
-- UART monitoring of system parameters
-
-The firmware is developed using STM32CubeIDE and HAL libraries.
+- UART monitoring
+- Closed-loop position control
