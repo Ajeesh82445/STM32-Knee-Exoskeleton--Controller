@@ -1,11 +1,17 @@
 # Proteus Simulation
 
-Proteus simulation files for the STM32-based knee exoskeleton controller.
+This folder contains the Proteus simulation files for the knee exoskeleton controller.
 
-The simulation demonstrates:
+## Simulation Features
+
+- STM32F103C6Tx controller
 - Desired knee-angle input
 - Closed-loop position control
-- PWM generation
-- Bidirectional motor control
-- L293D motor driver operation
+- PWM motor control
+- Bidirectional motor operation
+- L293D motor driver
+- DC motor
 - UART monitoring
+- Software-simulated joint position feedback
+
+The simulation is used to verify the controller operation before physical implementation.
